@@ -1,0 +1,6 @@
+.angular/
+.editorconfig
+.vscode/
+node_modules/
+public/
+*.md

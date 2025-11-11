@@ -1,0 +1,162 @@
+/* --- HEADER --- */
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #00796b;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  font-family:'Franklin Gothic Medium'
+}
+
+* {
+    font-family:Arial, Helvetica, sans-serif
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn-home { background-color: #004d40; color: white; }
+.btn-add { background-color: #00bfa5; color: white; }
+.btn-edit { background-color: #1976d2; color: white; }
+.btn-delete { background-color: #d32f2f; color: white; }
+.btn-view { background-color: #ffa000; color: white; }
+.btn-close { background-color: #555; color: white; }
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* --- MAIN --- */
+.main-container {
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 900px;
+}
+
+.liste-pollution {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pollution-card {
+  background-color: #e0f2f1;
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  word-wrap: break-word;       /* ✅ coupe les mots trop longs */
+  overflow-wrap: break-word;   /* ✅ pour navigateurs récents */
+  white-space: normal;         /* ✅ autorise les retours à la ligne */
+  max-width: 100%;             /* ✅ empêche tout dépassement horizontal */
+}
+
+.pollution-card p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-line;       /* ✅ garde les sauts de ligne tapés dans le texte */
+  margin: 5px 0;
+}
+
+.btn-group {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.message-vide {
+  text-align: center;
+  color: #555;
+  font-style: italic;
+}
+
+/* --- POPUP --- */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;       /* ne dépasse jamais 90% de la hauteur de l'écran */
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  overflow-y: auto;       /* active le scroll interne si le contenu est trop grand */
+}
+
+.popup-actions {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.photo_url-liste-container {
+  margin: 0.5rem 0;
+  text-align: center;       /* centre l'image */
+}
+
+.photo_url-liste {
+  max-width: 100%;          /* l'image ne dépasse jamais la largeur du parent */
+  max-height: 200px;        /* limite la hauteur pour les grandes images */
+  width: auto;              /* garde les proportions */
+  height: auto;             /* garde les proportions */
+  border-radius: 8px;       /* coins arrondis */
+  object-fit: contain;      /* l'image s'adapte à la box sans être étirée */
+  display: inline-block;    /* pour que text-align: center fonctionne */
+}
+
+.popup-photo_url-container {
+  margin: 1rem 0;
+  text-align: center;       /* centre l'image dans le popup */
+}
+
+.popup-photo_url {
+  max-width: 100%;
+  max-height: 400px;      /* limite la hauteur de l'image */
+  height: auto;
+  width: auto;
+  border-radius: 8px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;         /* centre l'image */
+}
+
+.popup-content p,
+.popup-content div {
+  word-wrap: break-word;      /* coupe les mots trop longs */
+  overflow-wrap: break-word;  /* pour navigateurs récents */
+  white-space: pre-line;      /* conserve les sauts de ligne tapés */
+  margin: 0.5rem 0;           /* petit espace entre les paragraphes */
+}

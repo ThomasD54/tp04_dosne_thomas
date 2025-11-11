@@ -1,0 +1,99 @@
+<!---->
+<!-- Création du formulaire de déclaration d'une pollution -->
+<!---->
+
+<div>
+    <div class="bloc-de-marge"></div>
+    <h2 class="titre-formulaire">Formulaire de déclaration d'une nouvelle pollution</h2>
+</div>
+
+<form [formGroup]="formulaireGroup" (ngSubmit)="onSubmit()" class="cssFormulaire">
+    
+    
+    <div class="bloc-du-formulaire">
+        <label>Titre de votre déclaration</label>
+        <input type="text" formControlName="titre" [class.is-invalid]="formulaireGroup.get('titre')?.invalid">
+        <small class="text-champ-invalide" *ngIf="formulaireGroup.get('titre')?.invalid">
+            <ng-container *ngIf="formulaireGroup.get('titre')?.hasError('required')">
+                <p>Le titre est obligatoire</p>
+            </ng-container>
+        </small>
+    </div>
+    
+    <div class="bloc-du-formulaire">
+    <label>Type de votre déclaration</label>
+    <select formControlName="type_pollution" [class.is-invalid]="formulaireGroup.get('type_pollution')">
+        <option *ngFor="let type of typeDePollutions" [value]="type">{{ type }}</option>
+    </select>
+    <small class="text-champ-invalide" *ngIf="formulaireGroup.get('type_pollution')?.invalid">
+        <ng-container *ngIf="formulaireGroup.get('type_pollution')?.hasError('required')">
+            <p>Le type est obligatoire</p>
+        </ng-container>
+    </small>
+    </div>
+
+    <div class="bloc-du-formulaire">
+        <label>Description</label>
+        <textarea formControlName="description" [class.is-invalid]="formulaireGroup.get('description')?.invalid"></textarea>
+        <small class="text-champ-invalide" *ngIf="formulaireGroup.get('description')?.invalid">
+            <ng-container *ngIf="formulaireGroup.get('description')?.hasError('required')">
+                <p>La description est obligatoire</p>
+            </ng-container>
+        </small>
+    </div>
+
+    <div class="bloc-du-formulaire">
+        <label>Date de l'observation</label>
+        <input type="date" formControlName="date_observation" [class.is-invalid]="formulaireGroup.get('date_observation')?.invalid">
+        <small class="text-champ-invalide" *ngIf="formulaireGroup.get('date_observation')?.invalid">
+            <ng-container *ngIf="formulaireGroup.get('date_observation')?.hasError('required')">
+                <p>La date est obligatoire</p>
+            </ng-container>
+        </small>
+    </div>
+
+    <div class="bloc-du-formulaire">
+        <label>Lieu</label>
+        <input type="text" formControlName="lieu" [class.is-invalid]="formulaireGroup.get('lieu')?.invalid">
+        <small class="text-champ-invalide" *ngIf="formulaireGroup.get('lieu')?.invalid">
+            <ng-container *ngIf="formulaireGroup.get('lieu')?.hasError('required')">
+                <p>Le lieu est obligatoire</p>
+            </ng-container>
+        </small>
+    </div>
+
+    <div class="bloc-du-formulaire">
+    <label>Latitude</label>
+    <input type="number" formControlName="latitude" [class.is-invalid]="formulaireGroup.get('latitude')?.invalid">
+    <small class="text-champ-invalide" *ngIf="formulaireGroup.get('latitude')?.invalid">
+        <ng-container *ngIf="formulaireGroup.get('latitude')?.hasError('required')">
+            <p>La latitude est obligatoire</p>
+        </ng-container>
+    </small>
+    </div>
+
+    <div class="bloc-du-formulaire">
+        <label>Longitude</label>
+        <input type="number" formControlName="longitude" [class.is-invalid]="formulaireGroup.get('longitude')?.invalid">
+        <small class="text-champ-invalide" *ngIf="formulaireGroup.get('longitude')?.invalid">
+            <ng-container *ngIf="formulaireGroup.get('longitude')?.hasError('required')">
+                <p>La longitude est obligatoire</p>
+            </ng-container>
+        </small>
+    </div>
+
+    <div class="bloc-du-formulaire">
+      <label>Photo (URL ou chemin)</label>
+      <input type="text" formControlName="photo_urlPollution">
+
+      <!-- Aperçu de la photo_url -->
+      <div *ngIf="formulaireGroup.value.photo_urlPollution" class="preview-photo_url">
+          <p>Aperçu :</p>
+          <img [src]="formulaireGroup.value.photo_urlPollution" alt="Aperçu photo_url" class="photo_url-pollution">
+      </div>
+  </div>
+
+
+    <button type="submit" [disabled]="formulaireGroup.invalid">Valider</button>
+
+</form>
