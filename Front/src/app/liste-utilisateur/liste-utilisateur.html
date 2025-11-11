@@ -1,0 +1,15 @@
+<main class="main-container">
+  <h2>Liste des utilisateurs</h2>
+
+  <div *ngIf="utilisateurs.length === 0" class="message-vide">
+    Aucun utilisateur enregistré pour le moment 🌱
+  </div>
+
+  <div class="liste-utilisateurs">
+    <div *ngFor="let user of utilisateurs" class="utilisateur-card">
+      <p><strong>Nom :</strong> {{ user.nom }}</p>
+      <p><strong>Email :</strong> {{ user.email }}</p>
+
+    </div>
+  </div>
+</main>

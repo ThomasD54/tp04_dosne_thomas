@@ -1,0 +1,48 @@
+<main class="main-container">
+  <h2>Liste des pollutions enregistrées</h2>
+
+  <div *ngIf="pollutions.length === 0" class="message-vide">
+    Il n'y a aucune pollution enregistrée pour le moment 🌱
+    <br>
+    Commencez dès maintenant à ajouter vos déclarations via le bouton ci-dessus.
+  </div>
+
+  <div *ngFor="let p of pollutions" class="pollution-card">
+    <h3>{{ p.titre }}</h3>
+    <p><strong>Type :</strong> {{ p.type_pollution }}</p>
+    <p><strong>Description :</strong> {{ p.description }}</p>
+    <p><strong>Lieu :</strong> {{ p.lieu }}</p>
+    <p><strong>Date :</strong> {{ p.date_observation | date:'mediumDate' }}</p>
+    <p><strong>Coordonnées :</strong> {{ p.latitude }}, {{ p.longitude }}</p>
+
+    <div *ngIf="p.photo_url" class="photo_url-liste-container">
+      <p>Photo de la pollution</p>
+      <img [src]="p.photo_url" alt="Photo de la pollution" class="photo_url-liste">
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-view" (click)="consulterPollution(p.id!)">Consulter</button>
+      <button class="btn btn-edit" (click)="modifierPollution(p.id!)">Modifier</button>
+      <button class="btn btn-delete" (click)="supprimerPollution(p.id!)">Supprimer</button>
+    </div>
+  </div>
+
+  <!-- Popup consultation -->
+  <div *ngIf="afficherPopup" class="popup-overlay">
+    <div class="popup-content">
+      <h2>Détails de la pollution</h2>
+      <p><strong>Titre :</strong> {{ pollutionEnConsultation?.titre }}</p>
+      <p><strong>Type :</strong> {{ pollutionEnConsultation?.type_pollution }}</p>
+      <p><strong>Description :</strong> {{ pollutionEnConsultation?.description }}</p>
+      <p><strong>Lieu :</strong> {{ pollutionEnConsultation?.lieu }}</p>
+      <p><strong>Date :</strong> {{ pollutionEnConsultation?.date_observation | date:'mediumDate' }}</p>
+      <p><strong>Coordonnées :</strong> {{ pollutionEnConsultation?.latitude }}, {{ pollutionEnConsultation?.longitude }}</p>
+
+      <div *ngIf="pollutionEnConsultation?.photo_url" class="popup-photo_url-container">
+        <img [src]="pollutionEnConsultation?.photo_url" alt="Photo de la pollution">
+      </div>
+
+      <button class="btn btn-close" (click)="fermerPopup()">Fermer</button>
+    </div>
+  </div>
+</main>

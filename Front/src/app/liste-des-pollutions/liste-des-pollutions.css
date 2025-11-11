@@ -1,0 +1,134 @@
+/* --- MAIN --- */
+.main-container {
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 900px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.liste-pollution {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.pollution-card {
+  background-color: #e0f2f1;
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  margin-bottom: 30px;
+  word-wrap: break-word;       
+  overflow-wrap: break-word;   
+  white-space: normal;         
+  max-width: 100%;             
+}
+
+.pollution-card p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-line;       
+  margin: 5px 0;
+}
+
+.btn-group {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn-add { background-color: #00bfa5; color: white; }
+.btn-edit { background-color: #1976d2; color: white; }
+.btn-delete { background-color: #d32f2f; color: white; }
+.btn-view { background-color: #ffa000; color: white; }
+.btn-close { background-color: #555; color: white; }
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.message-vide {
+  text-align: center;
+  color: #555;
+  font-style: italic;
+}
+
+/* --- POPUP --- */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  overflow-y: auto;
+}
+
+.popup-actions {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.photo_url-liste-container {
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.photo_url-liste {
+  max-width: 100%;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+.popup-photo_url-container {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.popup-photo_url {
+  max-width: 100%;
+  max-height: 400px;
+  height: auto;
+  width: auto;
+  border-radius: 8px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.popup-content p,
+.popup-content div {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-line;
+  margin: 0.5rem 0;
+}

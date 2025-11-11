@@ -22,7 +22,7 @@ export interface Pollution
 })
 export class ServicePollution 
 {
-  // URL du backend mocké (simuler)
+  
   private apiUrl = 'https://apitemplate-latest-uhyg.onrender.com';
 
   constructor(private http: HttpClient) {}
@@ -30,30 +30,30 @@ export class ServicePollution
   // Recuperation de toutes les pollutions
   recuperationToutePollution(): Observable<Pollution[]> 
   {
-    return this.http.get<Pollution[]>(this.apiUrl + "/api/pollution");
+    return this.http.get<Pollution[]>(this.apiUrl + "/api/pollutions");
   }
 
   // Recuperation d'une pollution specifique
   recuperationPollution(id: number): Observable<Pollution> 
   {
-    return this.http.get<Pollution>(`${this.apiUrl}/api/pollution/${id}`);
+    return this.http.get<Pollution>(`${this.apiUrl}/api/pollutions/${id}`);
   }
 
   // Ajouter une nouvelle pollution 
   ajouterPollution(p: Pollution): Observable<Pollution> 
   {
-    return this.http.post<Pollution>(`${this.apiUrl}/api/pollution`, p);
+    return this.http.post<Pollution>(`${this.apiUrl}/api/pollutions`, p);
   }
 
   // Met à jour une pollution
   majPollution(id: number, p:Pollution): Observable<Pollution> 
   {
-    return this.http.put<Pollution>(`${this.apiUrl}/api/pollution/${id}`, p);
+    return this.http.put<Pollution>(`${this.apiUrl}/api/pollutions/${id}`, p);
   }
 
   // Suppression d'une pollution
   suppressionPollution(id: number): Observable<void> 
   {
-    return this.http.delete<void>(`${this.apiUrl}/api/pollution/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/api/pollutions/${id}`);
   }
 }

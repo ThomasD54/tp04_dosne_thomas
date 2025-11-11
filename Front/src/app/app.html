@@ -2,74 +2,11 @@
   <h1>Gestionnaire des Pollutions</h1>
   <div class="nav-buttons">
     <button class="btn btn-home" (click)="allerAccueil()">Accueil</button>
+    <button class="btn btn-home" (click)="creationUser()">Créer un compte</button>
+    <button class="btn btn-home" (click)="listeUser()">Liste des utilisateurs</button>
     <button class="btn btn-add" (click)="nouvellePollution()">Ajouter une nouvelle pollution</button>
   </div>
 </header>
 
-<main class="main-container">
-  <!-- Liste des pollutions -->
-  <div *ngIf="!afficherFormulaire" class="liste-pollution">
-    <h2>Liste des pollutions enregistrées</h2>
-
-    <div *ngIf="pollutions.length === 0" class="message-vide">
-      Il n'y a aucune pollution enregistrée pour le moment 🌱<br>
-      Commencez dès maintenant à ajouter vos déclaration en cliquant sur "Ajouter une nouvelle pollution".
-    </div>
-
-    <div *ngFor="let p of pollutions" class="pollution-card">
-      <h3>{{ p.titre }}</h3>
-
-      <p><strong>Type :</strong> {{ p.type_pollution }}</p>
-      <p><strong>Description :</strong> {{ p.description }}</p>
-      <p><strong>Lieu :</strong> {{ p.lieu }}</p>
-      <p><strong>Date :</strong> {{ p.date_observation | date:'mediumDate' }}</p>
-      <p><strong>Coordonnées :</strong> {{ p.latitude }}, {{ p.longitude }}</p>
-
-        <!-- Photo -->
-      <div *ngIf="p.photo_url" class="photo_url-liste-container">
-        <p>Photo de la pollution</p>
-        <img [src]="p.photo_url" alt="Photo de la pollution" class="photo_url-liste">
-      </div>
-
-      <div class="btn-group">
-        <button class="btn btn-view" (click)="consulterPollution(p.id!)">Consulter</button>
-        <button class="btn btn-edit" (click)="modifierPollution(p)">Modifier</button>
-        <button class="btn btn-delete" (click)="supprimerPollution(p.id!)">Supprimer</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Formulaire -->
-  <div *ngIf="afficherFormulaire">
-    <app-formulaire-pollution 
-      [pollution]="pollutionEnCours"
-      (pollutionAjoutee)="gestionPollutionAjoutee()">
-    </app-formulaire-pollution>
-  </div>
-</main>
-
-<!-- Popup de consultation -->
-<div *ngIf="afficherPopup" class="popup-overlay">
-  <div class="popup-content">
-    <h2>Détails de la pollution</h2>
-
-    <p><strong>Titre :</strong> {{ pollutionEnConsultation?.titre }}</p>
-    <p><strong>Type :</strong> {{ pollutionEnConsultation?.type_pollution }}</p>
-    <p><strong>Description :</strong> {{ pollutionEnConsultation?.description }}</p>
-    <p><strong>Lieu :</strong> {{ pollutionEnConsultation?.lieu }}</p>
-    <p><strong>Date :</strong> {{ pollutionEnConsultation?.date_observation | date:'mediumDate' }}</p>
-    <p><strong>Coordonnées :</strong> {{ pollutionEnConsultation?.latitude }}, {{ pollutionEnConsultation?.longitude }}</p>
-
-    <!-- Photo de la pollution dans le popup -->
-    <div *ngIf="pollutionEnConsultation?.photo_url" class="popup-photo_url-container">
-        <img [src]="pollutionEnConsultation?.photo_url" alt="Photo de la pollution" class="popup-photo_url">
-    </div>
-
-    <div class="popup-actions">
-      <button class="btn btn-close" (click)="fermerPopup()">Fermer</button>
-    </div>
-
-    <br>
-
-  </div>
-</div>
+<!-- Le contenu de la page sera injecté ici via le router -->
+<router-outlet></router-outlet>
