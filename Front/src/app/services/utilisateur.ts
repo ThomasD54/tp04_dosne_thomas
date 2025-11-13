@@ -7,7 +7,7 @@ export interface Utilisateur {
   nom: string;
   prenom: string;
   login: string;
-  motdepasse: string;
+  pass: string;
   email?: string; // optionnel si ton backend génère l'email
 }
 

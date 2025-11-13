@@ -23,7 +23,7 @@ export class FormulaireUtilisateur {
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
       login: ['', Validators.required],
-      motdepasse: ['', [Validators.required, Validators.minLength(4)]],
+      pass: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
 
@@ -38,7 +38,7 @@ export class FormulaireUtilisateur {
       nom: this.formulaireGroup.value.nom!,
       prenom: this.formulaireGroup.value.prenom!,
       login: this.formulaireGroup.value.login!,
-      motdepasse: this.formulaireGroup.value.motdepasse!
+      pass: this.formulaireGroup.value.pass!
     };
 
     // Création d’un nouvel utilisateur
