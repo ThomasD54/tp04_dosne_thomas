@@ -41,14 +41,18 @@ export class FormulaireUtilisateur {
       pass: this.formulaireGroup.value.pass!
     };
 
+    console.log("Création utilisateur :", utilisateurForm);
     // Création d’un nouvel utilisateur
     this.serviceUtilisateur.ajouterUtilisateur(utilisateurForm).subscribe({
       next: (result) => {
+        console.log("Réponse du service utilisateur reçue");
         console.log('Utilisateur ajouté :', result);
         this.utilisateurCree.emit();
         this.formulaireGroup.reset();
       },
-      error: (err) => console.error('Erreur ajout utilisateur :', err)
+      error: (err) => {
+        console.log("Erreur lors de l'ajout de l'utilisateur :", err);
+        console.error('Erreur ajout utilisateur :', err)}
     });
   }
 }

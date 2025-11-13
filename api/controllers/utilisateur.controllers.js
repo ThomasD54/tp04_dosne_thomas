@@ -28,19 +28,29 @@ exports.findOne = (req, res) => {
 };
 
 // Création d’un utilisateur
-exports.create = (req, res) => {
-    const utilisateur = {
-        nom: req.body.nom,
-        prenom: req.body.prenom,
-        login: req.body.login,
-        pass: req.body.pass,
-        email: req.body.email || null
-    };
+exports.create = async (req, res) => {
+  console.log("📥 Requête reçue sur /api/utilisateurs");
+  console.log("🧾 req.body :", req.body);
 
-    Utilisateurs.create(utilisateur)
-        .then(data => res.send(data))
-        .catch(err => res.status(400).send({ message: err.message }));
+  const utilisateur = {
+    nom: req.body.nom,
+    prenom: req.body.prenom,
+    login: req.body.login,
+    pass: req.body.pass,
+  };
+
+  console.log("✅ Données envoyées à Sequelize :", utilisateur);
+
+  try {
+    const data = await Utilisateurs.create(utilisateur);
+    console.log("✅ Utilisateur créé :", data);
+    res.send(data);
+  } catch (err) {
+    console.error("❌ Erreur Sequelize :", err);
+    res.status(400).send({ message: err.message });
+  }
 };
+
 
 
 // Login

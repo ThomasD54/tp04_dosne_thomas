@@ -2,5 +2,6 @@
 .editorconfig
 .vscode/
 node_modules/
+shared/
 public/
 *.md
